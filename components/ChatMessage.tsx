@@ -46,7 +46,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
               href={cleanUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 underline hover:text-blue-800 break-all"
+              className="text-blue-600 underline hover:text-blue-800 break-words"
             >
               {cleanUrl}
             </a>

@@ -16,8 +16,8 @@ export const initializeChat = (): Chat => {
       model: 'gemini-2.5-flash',
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
-        temperature: 0.7, // Lower temperature to ensure it follows the "Scan" instruction accurately
-        maxOutputTokens: 350,
+        temperature: 0.4, // Lower temperature for more factual/tool-adherent responses
+        maxOutputTokens: 300,
         tools: [{ googleSearch: {} }] // CRITICAL: Enables "scanning" the website via Google Search
       },
     });
@@ -43,7 +43,6 @@ export const sendMessageToGemini = async (message: string): Promise<string> => {
     }
     
     // Check for grounding metadata (URLs found during search) and log them
-    // The model will automatically incorporate these links into the text response
     const groundingChunks = result.candidates?.[0]?.groundingMetadata?.groundingChunks;
     
     if (groundingChunks && groundingChunks.length > 0) {
@@ -53,7 +52,7 @@ export const sendMessageToGemini = async (message: string): Promise<string> => {
     return text;
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "I'm having a little trouble scanning the site right now! You can check all our samples directly here: https://buildmyceo.odoo.com/shop or book a call with us.";
+    return "I'm having a little trouble connecting to my brain right now! 🧠💥 But hey, you can check all our amazing samples directly here: https://buildmyceo.odoo.com/shop";
   }
 };
 
