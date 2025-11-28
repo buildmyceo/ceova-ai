@@ -1,0 +1,5 @@
+{
+  "name": "Ceova - BuildMyCEO AI Assistant",
+  "description": "A smart, sales-oriented AI chat widget for BuildMyCEO using Google Gemini API to recommend products and schedule meetings.",
+  "requestFramePermissions": []
+}
